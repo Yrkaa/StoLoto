@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <h3>{{text}}</h3>
+        <button @click="getInt()">Получить число</button>
+    </div>
+
+    
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+
+        Vue.createApp({
+            data() {
+                return {
+                    text: "xxx"
+                }
+            },
+
+            methods:{
+                getInt(){
+                    let numberDescriptions = [
+                        { number: 1, description: "кол" },
+                        { number: 2, description: "лебедь" },
+                        { number: 3, description: "трое, на троих" },
+                        { number: 7, description: "топор" },
+                        { number: 10, description: "бычий глаз" },
+                        { number: 11, description: "барабанные палочки, барабанная дробь" },
+                        { number: 12, description: "дюжина" },
+                        { number: 13, description: "чертова дюжина" },
+                        { number: 18, description: "в первый раз" },
+                        { number: 21, description: "очко" },
+                        { number: 22, description: "гуси-лебеди" },
+                        { number: 25, description: "опять двадцать пять" },
+                        { number: 32, description: "голодный год" },
+                        { number: 33, description: "кучерявый (две горбатых)" },
+                        { number: 41, description: "ем один" },
+                        { number: 43, description: "Сталинград" },
+                        { number: 44, description: "стульчики" },
+                        { number: 45, description: "баба ягодка опять" },
+                        { number: 48, description: "половинку просим" },
+                        { number: 50, description: "полста" },
+                        { number: 55, description: "перчатки" },
+                        { number: 61, description: "Гагарин" },
+                        { number: 66, description: "валенки" },
+                        { number: 69, description: "туда-сюда" },
+                        { number: 77, description: "топорики" },
+                        { number: 80, description: "бабушка" },
+                        { number: 81, description: "бабка с клюшкой" },
+                        { number: 88, description: "матрёшки" },
+                        { number: 89, description: "дедушкин сосед" },
+                        { number: 90, description: "дедушка" }
+                ];
+
+                    let random_int = Math.floor(Math.random() * 90) + 1
+                    numberDescriptions = numberDescriptions.filter(obj => obj.number == random_int)
+                    if(numberDescriptions.length == 0){
+                        numberDescriptions = [{n:-1, description: "Нет описания"}]
+                    }
+
+                    this.text = random_int+" "+numberDescriptions[0].description
+                }
+            }
+
+        }).mount("#app")
+    
+    </script>
+</body>
+</html>
